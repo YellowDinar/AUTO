@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+        {% load staticfiles %}
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}{% endblock %}</title>
+
+        <!-- Bootstrap -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+        <link href="{% static 'website/css/style.css' %}" rel="stylesheet">
+        <link href="{% static 'website/css/owl.carousel.css' %}" rel="stylesheet">
+        <link href="{% static 'website/css/owl.theme.css' %}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"/>
+
+        {% block css %}
+
+        {% endblock %}
+
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+        <script src="{% static 'website/js/owl.carousel.js' %}"></script>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+        {% block js %}
+
+        {% endblock %}
+</head>
+<body>
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item active" href="{% url 'index' %}">Home</a>
+          <a class="blog-nav-item" href="{% url 'random' %}">Random 3</a>
+          <a class="blog-nav-item" href="{% url 'topic' 2 %}">BMW</a>
+          <a class="blog-nav-item" href="{% url 'topic' 4 %}">Porsche</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="blog-header">
+        <h1 class="blog-title">The Bootstrap Blog</h1>
+        <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+            {% block content %}
+
+            {% endblock %}
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+            <div class="sidebar-module sidebar-module-inset">
+                <div class="sidebar-module">
+                    <h4>Topics</h4>
+                    <ol class="list-unstyled">
+                        {% for topic in topics.topics %}
+                            <li><a href="{% url 'topic' topic.id %}">{{ topic }}</a></li>
+                        {% endfor %}
+                    </ol>
+                </div>
+
+                <div class="sidebar-module">
+                    <h4>Random cars</h4>
+                    <ul class="setka">
+                      {% for img in topics.random_list %}
+                        <li>
+                            <a class="grouped_elements" rel="group1" href="/media/{{ img.image }}">
+                                <img src="/media/{{ img.image }}" alt="{{ img }}"/>
+                            </a>
+                            <br/>
+                            {{ img }}
+                        </li>
+                      {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <div class="blog-footer">
+      <nav class="blog-nav">
+          <a class="blog-nav-item active" href="{% url 'index' %}">Home</a>
+          <a class="blog-nav-item" href="{% url 'random' %}">Random 3</a>
+          <a class="blog-nav-item" href="{% url 'topic' 2 %}">BMW</a>
+          <a class="blog-nav-item" href="{% url 'topic' 4 %}">Porsche</a>
+          <a href="#">Back to top</a>
+      </nav>
+    </div>
+
+</body>
+</html>

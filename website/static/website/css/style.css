@@ -1,0 +1,34 @@
+.blog-masthead {
+    background: black;
+    padding: 15px 0;
+}
+
+.blog-footer {
+    background: black;
+}
+
+.img {
+    width: 550px;
+}
+
+.setka {
+    list-style-type: none;
+}
+
+.setka li {
+    display: inline-block;
+    margin: 15px 15px;
+    transition: all 0.3s ease-out 0s;
+}
+
+.setka li:hover {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.setka li img {
+    width: 300px;
+}

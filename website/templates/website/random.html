@@ -1,0 +1,21 @@
+{% extends "base/base.html" %}
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+    <div class="blog-post">
+            <h2 class="blog-post-title">Random of Posts</h2>
+            <ul class="setka">
+              {% for post in posts %}
+                <li>
+                    <a class="grouped_elements" rel="group1" href="/media/{{ post.image }}">
+                        <img src="/media/{{ post.image }}" alt="{{ post }}"/>
+                    </a>
+                </li>
+              {% endfor %}
+            </ul>
+    </div>
+    <script>
+
+    $("a.grouped_elements").fancybox();
+    </script>
+{% endblock %}
